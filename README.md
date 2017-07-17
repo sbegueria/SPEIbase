@@ -10,4 +10,3 @@ University of East Anglia.
 
 The output files, named 'SPEI1.nc', 'SPEI2.nc', etc, will be stored in the
 'ncdf' directory.
-

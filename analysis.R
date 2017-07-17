@@ -24,7 +24,7 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
     isMask <- F
   }
   
-  # Create variable and output file
+  # Create the variable and the output file
   if (!is.na(tlapse[1])) {
     spi.dim.tme <- ncdim_def(pre.nc$dim$time$name, pre.nc$dim$time$units,
                              pre.nc$dim$time$vals[tlapse[1]:tlapse[2]])
@@ -49,14 +49,14 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
     compression=9)
   out.nc <- nc_create(outFile, out.nc.var)
   ncatt_put(out.nc,0,'Title',title)
-  ncatt_put(out.nc,0,'Version','2.3')
+  ncatt_put(out.nc,0,'Version','2.4')
   ncatt_put(out.nc,0,'Id',outFile)
   ncatt_put(out.nc,0,'Summary',paste('Global dataset of the Standardized Precipitation-Evapotranspiration Index (SPEI) at the ',
                                      sca,'-month',ifelse(sca==1,'','s'),' time scale. ',comment,sep=''))
   ncatt_put(out.nc,0,'Keywords','drought, climatology, SPEI, Standardized Precipitation-Evapotranspiration Index')
   ncatt_put(out.nc,0,'Institution','Consejo Superior de Investigaciones Científicas, CSIC')
   ncatt_put(out.nc,0,'Url','http://sac.csic.es/spei')
-  ncatt_put(out.nc,0,'Creator','Santiago Beguería <santiago.begueria@csic.es>')
+  ncatt_put(out.nc,0,'Creators','Santiago Beguería <santiago.begueria@csic.es> and Sergio Vicente-Serrano <svicen@ipe.csic.es>')
   ncatt_put(out.nc,0,'Software','Created in R using the SPEI package (http://cran.r-project.org/web/packages/SPEI)')
   b <- match.call()
   ncatt_put(out.nc,0,'Call',
@@ -96,7 +96,7 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
     if (isMask) { # use a mask file
       msk <- ncvar_get(mask.nc, 'mask', c(1,j), c(dimlon,n))
     }
-    # convert from matrix to a list
+    # Convert from matrix to a list
     x.list <- vector('list', dimlon*n)
     for (i in 1:dimlon) {
       for (h in 1:n-1) {
@@ -143,23 +143,23 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
 library(SPEI)
 library(ncdf4)
 library(snowfall)
-sfInit(parallel=TRUE, cpus=20)
-sfExport(list='spei',namespace='SPEI')
+sfInit(parallel=TRUE, cpus=8)
+sfExport(list='spei', namespace='SPEI')
 
 for (i in c(1:48)) {
   spei.nc(
     sca=i,
-    inPre='./inputData/cru_ts3.22.1901.2013.pre.dat.nc',
-    inEtp='./inputData/cru_ts3.22.1901.2013.pet.dat.nc',
-    outFile=paste('./ncdf/spei',i,'.nc',sep=''),
+    inPre='./inputData/cru_ts3.23.1901.2014.pre.dat.nc',
+    inEtp='./inputData/cru_ts3.23.1901.2014.pet.dat.nc',
+    outFile=paste('./ncdf/spei',formatC(i, width=2, format='d', flag='0'),'.nc',sep=''),
     title=paste('Global ',i,'-month',ifelse(i==1,'','s'),' SPEI, z-values, 0.5 degree',sep=''),
-    comment='Using CRU 3.22 precipitation and potential evapotranspiration data',
+    comment='Using CRU TS 3.23 precipitation and potential evapotranspiration data',
     block=12
   )
-  gc()
-  system('purge')
 }
 sfStop()
+
+
 
 
 
