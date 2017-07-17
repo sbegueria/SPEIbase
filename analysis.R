@@ -3,13 +3,13 @@
 # -----------------------------
 
 spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
-                    inMask=NA, block=18, tlapse=NA) {
+                    inMask=NA, block=18, tlapse =NA) {
   
   require(SPEI)
   require(ncdf4)
   require(snowfall)
   
-  # Leer datos
+  # Read data
   pre.nc <- nc_open(inPre)
   if (!is.na(inEtp)) { # there is ETP input data, so compute the SPEI
     etp.nc <- nc_open(inEtp)
@@ -24,7 +24,7 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
     isMask <- F
   }
   
-  # Create the variable and the output file
+  # Create variable and output file
   if (!is.na(tlapse[1])) {
     spi.dim.tme <- ncdim_def(pre.nc$dim$time$name, pre.nc$dim$time$units,
                              pre.nc$dim$time$vals[tlapse[1]:tlapse[2]])
@@ -49,7 +49,7 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
     compression=9)
   out.nc <- nc_create(outFile, out.nc.var)
   ncatt_put(out.nc,0,'Title',title)
-  ncatt_put(out.nc,0,'Version','2.2')
+  ncatt_put(out.nc,0,'Version','2.3')
   ncatt_put(out.nc,0,'Id',outFile)
   ncatt_put(out.nc,0,'Summary',paste('Global dataset of the Standardized Precipitation-Evapotranspiration Index (SPEI) at the ',
                                      sca,'-month',ifelse(sca==1,'','s'),' time scale. ',comment,sep=''))
@@ -63,8 +63,9 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
             paste(b[[1]],'(',names(b)[[2]],'=',b[[2]],', ',names(b)[[3]],'=',b[[3]],
                   ', ',names(b)[[4]],'=',b[[4]],')',sep=''))
   ncatt_put(out.nc,0,'Date',date())
-  ncatt_put(out.nc,0,'Reference','Vicente-Serrano S.M., Beguería S., López-Moreno J.I. (2010) A Multiscalar Drought Index Sensitive to Global Warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate 23, 1696–1718.')
-  ncatt_put(out.nc,0,'Reference2','Beguería S., Vicente-Serrano S., Angulo-Martínez M. (2010) A multi-scalar global drought data set: the SPEIbase. Bulletin of the American Meteorological Society 91(10), 1351–1356.')
+  ncatt_put(out.nc,0,'Reference','Beguería S., Vicente-Serrano S., Reig F., Latorre B. (2014) Standardized precipitation evapotranspiration index (SPEI) revisited: Parameter fitting, evapotranspiration models, tools, datasets and drought monitoring. International Journal of Climatology 34, 3001-3023.')
+  ncatt_put(out.nc,0,'Reference2','Vicente-Serrano S.M., Beguería S., López-Moreno J.I. (2010) A Multiscalar Drought Index Sensitive to Global Warming: The Standardized Precipitation Evapotranspiration Index. Journal of Climate 23, 1696–1718.')
+  ncatt_put(out.nc,0,'Reference3','Beguería S., Vicente-Serrano S., Angulo-Martínez M. (2010) A multi-scalar global drought data set: the SPEIbase. Bulletin of the American Meteorological Society 91(10), 1351–1356.')
   ncatt_put(out.nc,'lon','long_name','longitude')
   ncatt_put(out.nc,'lon','limits',paste(out.nc$dim$lon$vals[1],
                                         out.nc$dim$lon$vals[out.nc$dim$lon$len],sep=', '))
@@ -111,8 +112,8 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
       }
     }
     
-    # Compute SPI series for cell (x,y)
-    speii <- function(d,s) {require(SPEI); spei(d,s,na.rm=TRUE)$fitted}
+    # Compute anomalies series
+    speii <- function(d,s) {spei(d,s,na.rm=TRUE)$fitted}
     x.list <- sfLapply(x.list,speii,sca)
     
     # Store the SPEI series in the netCDF file
@@ -139,18 +140,28 @@ spei.nc <- function(sca, inPre, inEtp, outFile, title, comment=NA,
 # ANALYSIS
 # ---------
 
-inPre <- './inputData/cru_ts3.20.1901.2011.pre.dat.nc'
-inPen <- './inputData/etpPenman/etpPenmanCRUTS3.2.nc'
-#inMask <- './mask.nc'
-
+library(SPEI)
+library(ncdf4)
 library(snowfall)
-sfInit(parallel=TRUE, cpus=24)
+sfInit(parallel=TRUE, cpus=20)
+sfExport(list='spei',namespace='SPEI')
+
 for (i in c(1:48)) {
-  tit <- paste('Global ',i,'-month',ifelse(i==1,'','s'),' SPEI, z-values, 0.5 degree',sep='')
-  spei.nc(i,
-          './inputData/cru_ts3.20.1901.2011.pre.dat.nc',
-          './inputData/etpPenman/etpPenmanCRUTS3.2.nc',
-          paste('./spei',i,'.nc',sep=''),
-          tit, 'Using CRU 3.2 precipitation and potential evapotranspiration data')
+  spei.nc(
+    sca=i,
+    inPre='./inputData/cru_ts3.22.1901.2013.pre.dat.nc',
+    inEtp='./inputData/cru_ts3.22.1901.2013.pet.dat.nc',
+    outFile=paste('./ncdf/spei',i,'.nc',sep=''),
+    title=paste('Global ',i,'-month',ifelse(i==1,'','s'),' SPEI, z-values, 0.5 degree',sep=''),
+    comment='Using CRU 3.22 precipitation and potential evapotranspiration data',
+    block=12
+  )
+  gc()
+  system('purge')
 }
 sfStop()
+
+
+
+
+
