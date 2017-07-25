@@ -68,13 +68,31 @@ geographical region, and other useful options.
 
 ## Version history
 
-* SPEIbase v2.5: 1) Based on the CRU TS 3.24.1 dataset, extending the temporal range of the SPEIbase up to December 2015. 2) Corrected an important bug on versions 2.2 to 2.4 of the dataset that prevented correctly reading the ETo data in mm/month.
-* SPEIbase v2.4: 1) Based on the CRU TS 3.23 dataset, extending the temporal range of the SPEIbase up to December 2014.
-* SPEIbase v2.3: 1) Based on the CRU TS 3.22 dataset, extending the temporal range of the SPEIbase up to December 2013.
-* SPEIbase v2.2: 1) The CRU TS 3.2 dataset has been used, extending the data range of the SPEIbase up to December 2011. 2) Potential evapotranspiration data from the CRU TS 3.2 dataset has been used instead of computing our own.
-* SPEIbase v2.1: 1) The revised dataset CRU TS 3.10.01 for precipitation is used. 2) Data on surface pressure and wind from 20th Century Reanalysis v.2 until December 2009 has been used for computing Penman PET. 3) An error while reading some data sources that yielded no data at longitudes 179.25 and 179.75 has been corrected.
-* SPEIbase v2.0: 1) Data has been extended to the period 1901-2010. 2) The FAO-56 Penman-Monteith's method has been used for computing PET instead of Thornthwaite in SPEIbase v1.0. 3) Unbiased probability weighted moments (ub-pwm) method has been used for fitting the log-Logistic distribution, instead of the sub-optimal plotting-position pwm method used in version 1.0. 4) The whole World is put in one single netCDF file.
-* SPEIbase v1.0: The global gridded SPEI dataset is available at time scales between 1 and 48 months, with spatial resolution of 0.5º lat/lon and temporal coverage between January 1901 and December 2006.
+* SPEIbase v2.5: 1) Based on the CRU TS 3.24.01 dataset, extending the temporal
+range of the SPEIbase up to December 2015. 2) Corrected an important bug on
+versions 2.2 to 2.4 of the dataset that prevented correctly reading the ETo data
+in mm/month.
+* SPEIbase v2.4: 1) Based on the CRU TS 3.23 dataset, extending the temporal 
+range of the SPEIbase up to December 2014.
+* SPEIbase v2.3: 1) Based on the CRU TS 3.22 dataset, extending the temporal 
+range of the SPEIbase up to December 2013.
+* SPEIbase v2.2: 1) The CRU TS 3.2 dataset has been used, extending the data 
+range of the SPEIbase up to December 2011. 2) Potential evapotranspiration data 
+from the CRU TS 3.2 dataset has been used instead of computing our own.
+* SPEIbase v2.1: 1) The revised dataset CRU TS 3.10.01 for precipitation is 
+used. 2) Data on surface pressure and wind from 20th Century Reanalysis v.2 
+until December 2009 has been used for computing Penman PET. 3) An error while 
+reading some data sources that yielded no data at longitudes 179.25 and 179.75 
+has been corrected.
+* SPEIbase v2.0: 1) Data has been extended to the period 1901-2010. 2) The 
+FAO-56 Penman-Monteith's method has been used for computing PET instead of 
+Thornthwaite in SPEIbase v1.0. 3) Unbiased probability weighted moments (ub-pwm) 
+method has been used for fitting the log-Logistic distribution, instead of the 
+sub-optimal plotting-position pwm method used in version 1.0. 4) The whole 
+World is put in one single netCDF file.
+* SPEIbase v1.0: The global gridded SPEI dataset is available at time scales 
+between 1 and 48 months, with spatial resolution of 0.5º lat/lon and temporal 
+coverage between January 1901 and December 2006.
 
 
 ## Got problems?
