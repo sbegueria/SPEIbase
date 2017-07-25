@@ -20,7 +20,8 @@ If you use this code or parts of it, it'd be nice if you cite the repo as:
 **Beguería S. (2017) SPEIbase: R code used in generating the SPEI global database, doi:10.5281/zenodo.834462**.
 
 
-## Using the code
+
+## Using the code
 
 In order to run the script (R/computeSPEI.R), you need to replace the fake
 files in the 'inputData' directory with the real ones containing the data.
@@ -31,7 +32,7 @@ The output files, named 'SPEI01.nc', 'SPEI02.nc', etc, will be stored in the
 'outputNcdf' directory.
 
 
-## Using the data
+## Using the data
 
 The output files are in netCDF v4 format, which allows for data compression.
 The files can be read in R using the ncdf4 package.
