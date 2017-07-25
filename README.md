@@ -68,7 +68,7 @@ geographical region, and other useful options.
 
 ## Version history
 
-* SPEIbase v2.5: 1) Based on the CRU TS 3.24.1 dataset, extending the temporal range of the SPEIbase up to December 2015. 2) Corrected a problem.
+* SPEIbase v2.5: 1) Based on the CRU TS 3.24.1 dataset, extending the temporal range of the SPEIbase up to December 2015. 2) Corrected an important bug on versions 2.2 to 2.4 of the dataset that prevented correctly reading the ETo data in mm/month.
 * SPEIbase v2.4: 1) Based on the CRU TS 3.23 dataset, extending the temporal range of the SPEIbase up to December 2014.
 * SPEIbase v2.3: 1) Based on the CRU TS 3.22 dataset, extending the temporal range of the SPEIbase up to December 2013.
 * SPEIbase v2.2: 1) The CRU TS 3.2 dataset has been used, extending the data range of the SPEIbase up to December 2011. 2) Potential evapotranspiration data from the CRU TS 3.2 dataset has been used instead of computing our own.
