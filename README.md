@@ -1,4 +1,4 @@
-# SPEIbase
+# SPEIbase [![DOI](https://zenodo.org/badge/97464490.svg)](https://zenodo.org/badge/latestdoi/97464490)
 
 R code used in generating the SPEI global database,
 http://spei.csic.es/database.html.
