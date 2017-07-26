@@ -27,7 +27,7 @@ The script `R/computeSPEI.R` computes the global SPEI dataset at different
 time scales. One netCDF file covering the whole globe and time period is
 generated for each time scale, e.g. `spei01.nc` for a time scale of 1 month,
 etc. Output files are stored on `/outputNcdf`.
-These are the global files that can be downloaded from http://spei.csic.es.
+These are the global files that can be downloaded from http://spei.csic.es/database.html.
 
 Before running the script it is necesary to replace the fake files in the
 `/inputData` directory with the real ones containing the data.
