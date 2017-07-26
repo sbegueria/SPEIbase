@@ -23,13 +23,27 @@ If you use this code or parts of it, it'd be nice if you cite the repo as:
 
 ## Using the code
 
-In order to run the script (R/computeSPEI.R), you need to replace the fake
-files in the 'inputData' directory with the real ones containing the data.
+The script `R/computeSPEI.R` computes the global SPEI dataset at different
+time scales. One netCDF file covering the whole globe and time period is
+generated for each time scale, e.g. `spei01.nc` for a time scale of 1 month,
+etc. Output files are stored on `/outputNcdf`.
+These are the global files that can be downloaded from http://spei.csic.es.
+
+Before running the script it is necesary to replace the fake files in the
+`/inputData` directory with the real ones containing the data.
 These can be downloaded from the website of the Climatic Research Unit (CRU),
 University of East Anglia.
 
-The output files, named 'SPEI01.nc', 'SPEI02.nc', etc, will be stored in the
-'outputNcdf' directory.
+The script `R/outputTxt` generates, from the .nc files computed previously,
+additional files containing the SPEI time series at the scales between 1 and
+48 months, for every single cell in the dataset.
+These files are stored in plain text, comma-separated, files, and stored
+under `/outputTxt`.
+The files names (e.g. `spei_-0.25_5.25.csv.gz`) contain the central coordinates
+of the grid cell.
+These are the files that can be downloaded as 'single location' data at
+http://spei.csic.es/database.html.
+
 
 
 ## Using the data
