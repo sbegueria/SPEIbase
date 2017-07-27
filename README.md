@@ -11,18 +11,37 @@ degrees spatial resolution and a monthly time resolution.
 It has a multi-scale character, providing SPEI time-scales between 1 and 48 
 months. 
 Currently it covers the period between January 1901 and December 2015.
+The SPEI is the Standardized Precipitation-Evapotranspiration Index, defined
+in the following research papers:
+
+* **Vicente-Serrano S.M., Santiago Beguería, Juan I. López-Moreno, (2010) A 
+Multi-scalar drought index sensitive to global warming: The Standardized 
+Precipitation Evapotranspiration Index - SPEI. Journal of Climate 23: 
+1696-1718.**
+* **Beguería, S., Vicente-Serrano, S.M., Fergus Reig, Borja Latorre. 
+Standardized Precipitation Evapotranspiration Index (SPEI) revisited (2014): 
+parameter fitting, evapotranspiration models, kernel weighting, tools, 
+datasets and drought monitoring. International Journal of Climatology, 
+34: 3001-3023**
 
 The data are accesible from the SPEI web site, http://spei.csic.es, but we
 have shared the R code on this repository to allow anyone to reproduce the
 dataset.
 
 If you use this code or parts of it, it'd be nice if you cite the repo as:
-* **Beguería S. (2017) SPEIbase: R code used in generating the SPEI global database, doi:10.5281/zenodo.834462**.
+* **Beguería S. (2017) SPEIbase: R code used in generating the SPEI global 
+database, doi:10.5281/zenodo.834462**.
 
 If you use the SPEI dataset in your resarch, please cite the following papers:
-* **Vicente-Serrano S.M., Santiago Beguería, Juan I. López-Moreno, (2010) A Multi-scalar drought index sensitive to global warming: The Standardized Precipitation Evapotranspiration Index - SPEI. Journal of Climate 23: 1696-1718.**
-* **Beguería, S., Vicente-Serrano, S.M. y Angulo, M., (2010): A multi-scalar global drought data set: the SPEIbase: A new gridded product for the analysis of drought variability and impacts. Bulletin of the American Meteorological Society. 91, 1351-1354**
-* **Beguería, S., Vicente-Serrano, S.M., Fergus Reig, Borja Latorre. Standardized Precipitation Evapotranspiration Index (SPEI) revisited (2014): parameter fitting, evapotranspiration models, kernel weighting, tools, datasets and drought monitoring. International Journal of Climatology, 34: 3001-3023**
+* **Beguería, S., Vicente-Serrano, S.M. y Angulo, M., (2010): A multi-scalar 
+global drought data set: the SPEIbase: A new gridded product for the analysis 
+of drought variability and impacts. Bulletin of the American Meteorological 
+Society. 91, 1351-1354**
+* **Vicente-Serrano, S.M., Beguería, S., López-Moreno, J.I., Angulo, M., El 
+Kenawy, A. (2010): A new global 0.5° gridded dataset (1901-2006) of a 
+multiscalar drought index: comparison with current drought index datasets 
+based on the Palmer Drought Severity Index. Journal of Hydrometeorology. 
+11: 1033-1043**
 
 
 ## Using the code
