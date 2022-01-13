@@ -10,7 +10,7 @@ robust information about drought conditions at the global scale, with a 0.5
 degrees spatial resolution and a monthly time resolution.
 It has a multi-scale character, providing SPEI time-scales between 1 and 48 
 months. 
-Currently it covers the period between January 1901 and December 2015.
+Currently it covers the period between January 1901 and December 2018.
 The SPEI is the Standardized Precipitation-Evapotranspiration Index, defined
 in the following research papers:
 
@@ -53,9 +53,14 @@ etc. Output files are stored on `/outputNcdf`.
 These are the global files that can be downloaded from http://spei.csic.es/database.html.
 
 Before running the script it is necesary to replace the fake files in the
-`/inputData` directory with the real ones containing the data.
-These can be downloaded from the website of the Climatic Research Unit (CRU),
-University of East Anglia.
+`/inputData` directory with the real ones containing the data, which are:
+`cru_ts3.24.01.1901.2015.pet.dat.nc` and
+`cru_ts3.24.01.1901.2015.pre.dat.nc`.
+These files can be downloaded from the website of the Climatic Research Unit
+(CRU) of the University of East Anglia, at
+https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_4.03/cruts.1905011326.v4.03/.
+Also check http://www.cru.uea.ac.uk/data/ for more information on this dataset.
+You might need to decompress the files before computing the SPEI.
 
 The script `R/outputTxt` generates, from the .nc files computed previously,
 additional files containing the SPEI time series at the scales between 1 and
@@ -69,12 +74,12 @@ http://spei.csic.es/database.html.
 
 
 
-## Using the data
+## Using the dataset
 
 The output files are in netCDF v4 format, which allows for data compression.
 The files can be read in R using the ncdf4 package.
 
-However, some widely used GIS packages do not provide suuport yet for netCDF v4.
+However, some widely used GIS packages do not provide suport yet for netCDF v4.
 It is possible to convert the files to the netCDF v3 format used in many
 GIS softwares, by using the nccopy program by unidata.
 For instance, to convert a netCDF-4 format file foo4c.nc to file foo3.nc in
@@ -105,6 +110,8 @@ geographical region, and other useful options.
 
 ## Version history
 
+* SPEIbase v2.6: 1) Based on the CRU TS 4.03 dataset, spanning the period
+between January 1901 to December 2018.
 * SPEIbase v2.5: 1) Based on the CRU TS 3.24.01 dataset, extending the temporal
 range of the SPEIbase up to December 2015. 2) Corrected an important bug on
 versions 2.2 to 2.4 of the dataset that prevented correctly reading the ETo data
@@ -140,7 +147,6 @@ if you have any questions or problems.
 
 ## Copyright and license
 
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version.
+The code on this repository is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published by
+the Free Software Foundation, using version 3 or any upgrade.
