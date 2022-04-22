@@ -24,15 +24,15 @@ parameter fitting, evapotranspiration models, kernel weighting, tools,
 datasets and drought monitoring. International Journal of Climatology, 
 34: 3001-3023**
 
-The data are accesible from the SPEI web site, http://spei.csic.es, but we
+The data are accessible from the SPEI web site, http://spei.csic.es, but we
 have shared the R code on this repository to allow anyone to reproduce the
-dataset.
+data set.
 
 If you use this code or parts of it, it'd be nice if you cite the repo as:
 * **Beguería S. (2017) SPEIbase: R code used in generating the SPEI global 
 database, doi:10.5281/zenodo.834462**.
 
-If you use the SPEI dataset in your resarch, please cite the following papers:
+If you use the SPEI data set in your research, please cite the following papers:
 * **Beguería, S., Vicente-Serrano, S.M. y Angulo, M., (2010): A multi-scalar 
 global drought data set: the SPEIbase: A new gridded product for the analysis 
 of drought variability and impacts. Bulletin of the American Meteorological 
@@ -46,25 +46,24 @@ based on the Palmer Drought Severity Index. Journal of Hydrometeorology.
 
 ## Using the code
 
-The script `R/computeSPEI.R` computes the global SPEI dataset at different
+The script `R/computeSPEI.R` computes the global SPEI data set at different
 time scales. One netCDF file covering the whole globe and time period is
 generated for each time scale, e.g. `spei01.nc` for a time scale of 1 month,
 etc. Output files are stored on `/outputNcdf`.
 These are the global files that can be downloaded from http://spei.csic.es/database.html.
 
-Before running the script it is necesary to replace the fake files in the
+Before running the script it is necessary to replace the fake files in the
 `/inputData` directory with the real ones containing the data, which are:
-`cru_ts3.24.01.1901.2015.pet.dat.nc` and
-`cru_ts3.24.01.1901.2015.pre.dat.nc`.
+`cru_ts4.05.1901.2020.pet.dat.nc` and
+`cru_ts4.05.1901.2020.pre.dat.nc`.
 These files can be downloaded from the website of the Climatic Research Unit
-(CRU) of the University of East Anglia, at
-https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_4.03/cruts.1905011326.v4.03/.
-Also check http://www.cru.uea.ac.uk/data/ for more information on this dataset.
+(CRU) of the University of East Anglia.
+Check http://www.cru.uea.ac.uk/data/ for more information on this data set.
 You might need to decompress the files before computing the SPEI.
 
 The script `R/outputTxt` generates, from the .nc files computed previously,
 additional files containing the SPEI time series at the scales between 1 and
-48 months, for every single cell in the dataset.
+48 months, for every single cell in the data set.
 These files are stored in plain text, comma-separated, files, and stored
 under `/outputTxt`.
 The files names (e.g. `spei_-0.25_5.25.csv.gz`) contain the central coordinates
@@ -111,7 +110,8 @@ geographical region, and other useful options.
 ## Version history
 
 * SPEIbase v2.7: 1) Based on the CRU TS 4.05 dataset, spanning the period
-between January 1901 to December 2020.
+between January 1901 to December 2020. Using TLMoments::PWM instead of
+lmomco::pwm.ub for calculating distribution parameters.
 * SPEIbase v2.6: 1) Based on the CRU TS 4.03 dataset, spanning the period
 between January 1901 to December 2018.
 * SPEIbase v2.5: 1) Based on the CRU TS 3.24.01 dataset, extending the temporal
@@ -151,4 +151,5 @@ if you have any questions or problems.
 
 The code on this repository is free software: you can redistribute it and/or
 modify it under the terms of the GNU General Public License as published by
-the Free Software Foundation, using version 3 or any upgrade.
+the Free Software Foundation, using version 3 or any upgrade
+(https://www.gnu.org/licenses/gpl-3.0.en.html).
