@@ -3,19 +3,23 @@
 # to disk on directory './outputNcdf/'.
 
 if (!require('pacman')) install.packages('pacman')
-pacman::p_load(ncdf4, snowfall, parallel, Hmisc) #SPEI
+pacman::p_load(ncdf4, snowfall, parallel, Hmisc, devtools)
+
+# Using SPEI package version 1.7.2. Please, note that this will replace any
+# other version of the SPEI package that you might have installed!
+devtools::install_github('sbegueria/SPEI@v1.7.2')
+
+# A function to efficiently compute the SPEI over a large netCDF file (using
+# multiple cores).
 source('./R/functions.R')
 
-# Init a parallel computing cluster; modify the parameter `cpus` to the
-# desired number of cores; otherwise, use all available cores
-#sfInit(parallel=TRUE, cpus=detectCores())
-sfInit(parallel=TRUE, cpus=10)
+# Initialize a parallel computing cluster; modify the parameter `cpus` to the
+# desired number of cores; otherwise, it will use all available cores.
+sfInit(parallel=TRUE, cpus=detectCores())
 sfExport(list='spei', namespace='SPEI')
 
-# Compute SPEI at all time scales between 1 and 48 and store to disk
-for (i in c(1)) {
-#for (i in c(1,3,6,9,12)) {
-#for (i in c(1:48)[-c(1,3,6,9,12)]) {
+# Compute SPEI at all time scales between 1 and 48 and store to disk.
+for (i in c(1:48)) {
     spei.nc(
       sca=i,
 		  inPre='./inputData/cru_ts4.05.1901.2020.pre.dat.nc',
@@ -35,5 +39,5 @@ for (i in c(1)) {
 # Stop the parallel cluster
 sfStop()
 
-# Session information
+# Print session information
 sessionInfo()
