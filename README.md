@@ -10,7 +10,7 @@ robust information about drought conditions at the global scale, with a 0.5
 degrees spatial resolution and a monthly time resolution.
 It has a multi-scale character, providing SPEI time-scales between 1 and 48 
 months. 
-Currently it covers the period between January 1901 and December 2020.
+Currently it covers the period between January 1901 and December 2021.
 The SPEI is the Standardized Precipitation-Evapotranspiration Index, defined
 in the following research papers:
 
@@ -109,8 +109,10 @@ geographical region, and other useful options.
 
 ## Version history
 
+* SPEIbase v2.8.0: 1) the CRU TS 4.06 dataset, spanning the period
+between January 1901 to December 2021. 2) Using SPEI package version 1.8.0.
 * SPEIbase v2.7: 1) Based on the CRU TS 4.05 dataset, spanning the period
-between January 1901 to December 2020. Using TLMoments::PWM instead of
+between January 1901 to December 2020. 2) Using TLMoments::PWM instead of
 lmomco::pwm.ub for calculating distribution parameters.
 * SPEIbase v2.6: 1) Based on the CRU TS 4.03 dataset, spanning the period
 between January 1901 to December 2018.
