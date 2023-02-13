@@ -5,9 +5,9 @@
 if (!require('pacman')) install.packages('pacman')
 pacman::p_load(ncdf4, snowfall, parallel, Hmisc, devtools)
 
-# Using SPEI package version 1.7.2. Please, note that this will replace any
+# Using SPEI package version 1.8.0. Please, note that this will replace any
 # other version of the SPEI package that you might have installed!
-devtools::install_github('sbegueria/SPEI@v1.7.2')
+devtools::install_github('sbegueria/SPEI@v1.8.0')
 
 # A function to efficiently compute the SPEI over a large netCDF file (using
 # multiple cores).
@@ -22,8 +22,8 @@ sfExport(list='spei', namespace='SPEI')
 for (i in c(1:48)) {
     spei.nc(
       sca=i,
-		  inPre='./inputData/cru_ts4.05.1901.2020.pre.dat.nc',
-		  inEtp='./inputData/cru_ts4.05.1901.2020.pet.dat.nc',
+		  inPre='./inputData/cru_ts4.06.1901.2021.pre.dat.nc',
+		  inEtp='./inputData/cru_ts4.06.1901.2021.pet.dat.nc',
 		  outFile=paste('./outputNcdf/spei',
 		              formatC(i, width=2, format='d', flag='0'),'.nc',sep=''),
 		  title=paste('Global ',i,'-month',

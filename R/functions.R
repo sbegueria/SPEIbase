@@ -143,7 +143,7 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 		}
 
 		# Compute series of anomalies
-		speii <- function(d,s) {SPEI::spei(d, s, na.rm=TRUE)$fitted}
+		speii <- function(d,s) {SPEI::spei(d, s, na.rm=TRUE, verbose=FALSE)$fitted}
 		x.list <- sfLapply(x.list, speii, sca)
 		# Convert back to matrix
 		for (i in 1:dimlon) {
