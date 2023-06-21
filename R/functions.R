@@ -87,7 +87,7 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 	ncatt_put(out.nc, "crs", "grid_mapping_name", "latitude_longitude")
 	ncatt_put(out.nc, "crs", "semi_major_axis", 6378137.0)
 	ncatt_put(out.nc, "crs", "inverse_flattening", 298.257223563)
-	ncatt_put(nc, "crs", "crs_wkt", 'GEODCRS["WGS 84",DATUM["World Geodetic System 1984",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1.0]]],PRIMEM["Greenwich",0],CS[ellipsoidal,3],AXIS["(lat)",north,ANGLEUNIT["degree",0.0174532925199433]],AXIS["(lon)",east,ANGLEUNIT["degree",0.0174532925199433]],AXIS["ellipsoidal height (h)",up,LENGTHUNIT["metre",1.0]]]')
+	ncatt_put(out.nc, "crs", "crs_wkt", 'GEODCRS["WGS 84",DATUM["World Geodetic System 1984",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1.0]]],PRIMEM["Greenwich",0],CS[ellipsoidal,3],AXIS["(lat)",north,ANGLEUNIT["degree",0.0174532925199433]],AXIS["(lon)",east,ANGLEUNIT["degree",0.0174532925199433]],AXIS["ellipsoidal height (h)",up,LENGTHUNIT["metre",1.0]]]')
 	
 	# Add lon attributes
 	ncatt_put(out.nc,'lon','standard_name','longitude')
