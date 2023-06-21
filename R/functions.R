@@ -102,7 +102,7 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 	ncatt_put(out.nc,'time','axis','T')
 	
 	# Add Global attributes
-	ncatt-put(out.nc,0,'Conventions','CF-1.8')
+	ncatt_put(out.nc,0,'Conventions','CF-1.8')
 	ncatt_put(out.nc,0,'title',title)
 	ncatt_put(out.nc,0,'version','2.8')
 	ncatt_put(out.nc,0,'id',outFile)
