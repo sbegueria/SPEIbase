@@ -29,6 +29,7 @@ for (i in c(1:48)) {#  for (i in c(6)) {
 		  title=paste('Global ',i,'-month',
 		            ifelse(i==1,'','s'),' SPEI, z-values, 0.5 degree',sep=''),
 		  comment='Using CRU TS 4.07 precipitation and potential evapotranspiration data',
+	    	  version='2.9.0',
 		  block=36,
 		  inMask=NA,
 		  tlapse=NA
