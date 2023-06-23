@@ -5,6 +5,7 @@
 #' @param inEtp     Character vector. Path to the input evapotranspiration netCDF file.
 #' @param title     Character vector. Title of the dataset.
 #' @param comment   Character vector. A comment.
+#' @param version   Character vector. Dataset version number.
 #' @param inMask    Character vector. Path to a netCDF mask file.
 #' @param block     Integer. Number of latitude blocks to be processed at the
 #' same time. Must be an integer dividend of 360.
@@ -19,7 +20,7 @@
 #'
 #' @export
 spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
-                    inMask=NA, block=18, tlapse=NA) {
+		    version=NA, inMask=NA, block=18, tlapse=NA) {
   #require(SPEI)
   require(ncdf4)
   require(snowfall)
@@ -102,9 +103,9 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 	ncatt_put(out.nc,'time','axis','T')
 	
 	# Add Global attributes
-	ncatt_put(out.nc,0,'Conventions','CF-1.8')
+	ncatt_put(out.nc,0,'conventions','CF-1.8')
 	ncatt_put(out.nc,0,'title',title)
-	ncatt_put(out.nc,0,'version','2.8')
+	ncatt_put(out.nc,0,'version',version)
 	ncatt_put(out.nc,0,'id',outFile)
 	ncatt_put(out.nc,0,'summary',paste('Global dataset of the Standardized Precipitation-Evapotranspiration Index (SPEI) at the ', sca,'-month', ifelse(sca==1,'','s'), ' time scale. ', comment, sep=''))
 	ncatt_put(out.nc,0,'keywords','drought, climatology, SPEI, Standardized Precipitation-Evapotranspiration Index')
