@@ -110,7 +110,8 @@ geographical region, and other useful options.
 ## Version history
 
 * SPEIbase v2.10.0: 1) Based on the CRU TS 4.08 dataset, spanning the period
-between January 1901 to December 2023.
+between January 1901 to December 2023. 2) Minor changes to the CRS definition
+metadata (crs 4979 to 4326).
 * SPEIbase v2.9.0: 1) Based on the CRU TS 4.07 dataset, spanning the period
 between January 1901 to December 2022.
 * SPEIbase v2.8.0: 1) Based on the CRU TS 4.06 dataset, spanning the period
