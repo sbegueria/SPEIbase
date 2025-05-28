@@ -10,7 +10,7 @@ robust information about drought conditions at the global scale, with a 0.5
 degrees spatial resolution and a monthly time resolution.
 It has a multi-scale character, providing SPEI time-scales between 1 and 48 
 months. 
-Currently it covers the period between January 1901 and December 2023.
+Currently it covers the period between January 1901 and December 2024.
 The SPEI is the Standardized Precipitation-Evapotranspiration Index, defined
 in the following research papers:
 
@@ -54,8 +54,8 @@ These are the global files that can be downloaded from http://spei.csic.es/datab
 
 Before running the script it is necessary to replace the fake files in the
 `/inputData` directory with the real ones containing the data, which are:
-`cru_ts4.08.1901.2023.pet.dat.nc` and
-`cru_ts4.08.1901.2023.pre.dat.nc`.
+`cru_ts4.09.1901.2024.pet.dat.nc` and
+`cru_ts4.09.1901.2024.pre.dat.nc`.
 These files can be downloaded from the website of the Climatic Research Unit
 (CRU) of the University of East Anglia.
 Check http://www.cru.uea.ac.uk/data/ for more information on this data set.
@@ -109,6 +109,7 @@ geographical region, and other useful options.
 
 ## Version history
 
+* SPEIbase v2.11.0: 1) Based on the CRU TS 4.09 dataset, spanning the period between January 1901 to December 2024. 2) Using SPEI package version 1.8.1.
 * SPEIbase v2.10.0: 1) Based on the CRU TS 4.08 dataset, spanning the period
 between January 1901 to December 2023. 2) Minor changes to the CRS definition
 metadata (crs 4979 to 4326). 3) Using SPEI package version 1.8.1.
