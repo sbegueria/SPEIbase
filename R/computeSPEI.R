@@ -22,14 +22,14 @@ sfExport(list='spei', namespace='SPEI')
 for (i in c(1:48)) {#  for (i in c(6)) {
     spei.nc(
       sca=i,
-		  inPre='./inputData/cru_ts4.08.1901.2023.pre.dat.nc',
-		  inEtp='./inputData/cru_ts4.08.1901.2023.pet.dat.nc',
+		  inPre='./inputData/cru_ts4.09.1901.2024.pre.dat.nc',
+		  inEtp='./inputData/cru_ts4.09.1901.2024.pet.dat.nc',
 		  outFile=paste('./outputNcdf/spei',
 		              formatC(i, width=2, format='d', flag='0'),'.nc',sep=''),
 		  title=paste('Global ',i,'-month',
 		            ifelse(i==1,'','s'),' SPEI, z-values, 0.5 degree',sep=''),
-		  comment='Using CRU TS 4.08 precipitation and potential evapotranspiration data',
-	    	  version='2.10.0',
+		  comment='Using CRU TS 4.09 precipitation and potential evapotranspiration data',
+	    version='2.11.0',
 		  block=36,
 		  inMask=NA,
 		  tlapse=NA

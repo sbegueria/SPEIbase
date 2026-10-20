@@ -1,6 +1,6 @@
 THIS IS A FAKE FILE. IN ORDER TO BE ABLE TO RUN THE SCRIPT, REPLACE IT WITH THE REAL ONE: 
 
-cru_ts4.08.1901.2023.pet.dat.nc
+cru_ts4.09.1901.2024.pet.dat.nc
 
 The real data can be found on the website of the Climatic Research Unit (CRU), University of East Anglia. Plase, check http://www.cru.uea.ac.uk/data/.
 
