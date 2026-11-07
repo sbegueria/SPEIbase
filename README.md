@@ -107,8 +107,34 @@ In a similar fashion, it is possible to use ncks to select a specific
 geographical region, and other useful options.
 
 
+## Known issue: PET unit conversion (fixed in v2.13.0)
+
+The CRU TS potential evapotranspiration (PET) data are in mm/day, while
+precipitation is in mm/month, so PET has to be multiplied by the number of
+days in each month before computing the climatic water balance.
+
+* **v2.5 and v2.5.1 (the code archived on Zenodo).** The code computes the
+number of days per month but never uses it, so PET in mm/day is subtracted
+from precipitation in mm/month. Anyone running this archived code should
+apply the conversion described below.
+* **v2.6 to v2.12.0.** The conversion was added, but applied incorrectly
+(see [issue #19](https://github.com/sbegueria/SPEIbase/issues/19)). The
+vector of days per month was recycled along the longitude dimension of the
+data array instead of along time, so each grid cell's PET was multiplied by
+a single constant (28, 29, 30 or 31) in every month. All published SPEI
+datasets from v2.6 to v2.12.0 are affected. The effect is generally small,
+but it is largest in arid regions where PET dominates the water balance.
+SPI calculations do not use PET and are not affected.
+* **Fix.** The conversion is now applied along the time dimension with
+`sweep(pet, 3, ndays, '*')` in `R/functions.R` from v2.13.0, and a corrected dataset
+release will follow.
+
+Thanks to @arnabkdey for reporting the problem.
+
+
 ## Version history
 
+* SPEIbase v2.13.0: 1) Corrected the PET conversion from mm/day to mm/month, which since v2.6 had been applied along longitude instead of time (issue #19, reported by @arnabkdey). See "Known issue: PET unit conversion" above.
 * SPEIbase v2.12.0: 1) Based on the CRU TS 4.10 dataset, spanning the period between January 1901 to December 2025. 2) Using SPEI package version 1.8.1.
 * SPEIbase v2.11.0: 1) Based on the CRU TS 4.09 dataset, spanning the period between January 1901 to December 2024. 2) Using SPEI package version 1.8.1.
 * SPEIbase v2.10.0: 1) Based on the CRU TS 4.08 dataset, spanning the period
