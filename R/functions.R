@@ -131,6 +131,13 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 	if (isSPEI) {
 	  ndays <- Hmisc::monthDays(as.Date(out.nc.var$dim[[3]]$vals,
 	                                    origin='1900-1-1'))
+	  # ndays is built from the precipitation time axis, but it is applied to
+	  # PET read with the same time indices: both files must share that axis.
+	  tidx <- if (is.na(tlapse[1])) seq_len(dimtme) else tlapse[1]:tlapse[2]
+	  if (!identical(as.numeric(etp.nc$dim$time$vals[tidx]),
+	                 as.numeric(pre.nc$dim$time$vals[tidx]))) {
+	    stop('Precipitation and PET files have different time axes.')
+	  }
 	}
 	
 	n <- block # latitudes block (number of lines read each time)
@@ -139,7 +146,11 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 		count <- c(dimlon,n,dimtme)
 		if (isSPEI) {
 		  # Read precipitation and ET data and calculate balance
-		  x <- ncvar_get(etp.nc, varid=etp.nc$var[[1]]$name, start, count) * ndays
+		  # PET is in mm/day: convert to mm/month by multiplying each time step
+		  # by its number of days. sweep() over dimension 3 (time) is needed;
+		  # a plain `* ndays` recycles ndays along longitude (issue #19).
+		  x <- sweep(ncvar_get(etp.nc, varid=etp.nc$var[[1]]$name, start, count),
+		             3, ndays, '*')
       x <- ncvar_get(pre.nc, varid=pre.nc$var[[1]]$name, start, count) - x
 		} else {
 		  # Read precipitation data
