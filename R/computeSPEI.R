@@ -5,9 +5,9 @@
 if (!require('pacman')) install.packages('pacman')
 pacman::p_load(ncdf4, snowfall, parallel, Hmisc, devtools)
 
-# Using SPEI package version 1.8.1. Please, note that this will replace any
+# Using SPEI package version 1.9.0. Please, note that this will replace any
 # other version of the SPEI package that you might have installed!
-pak::pak('sbegueria/SPEI@v1.8.1')
+pak::pak('sbegueria/SPEI@v1.9.0')
 
 # A function to efficiently compute the SPEI over a large netCDF file (using
 # multiple cores).
