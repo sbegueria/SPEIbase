@@ -134,7 +134,7 @@ Thanks to @arnabkdey for reporting the problem.
 
 ## Version history
 
-* SPEIbase v2.13.0: 1) Corrected the PET conversion from mm/day to mm/month, which since v2.6 had been applied along longitude instead of time (issue #19, reported by @arnabkdey). See "Known issue: PET unit conversion" above.
+* SPEIbase v2.13.0: 1) Corrected the PET conversion from mm/day to mm/month, which since v2.6 had been applied along longitude instead of time (issue #19, reported by @arnabkdey). See "Known issue: PET unit conversion" above. Using SPEI package version 1.9.0.
 * SPEIbase v2.12.0: 1) Based on the CRU TS 4.10 dataset, spanning the period between January 1901 to December 2025. 2) Using SPEI package version 1.8.1.
 * SPEIbase v2.11.0: 1) Based on the CRU TS 4.09 dataset, spanning the period between January 1901 to December 2024. 2) Using SPEI package version 1.8.1.
 * SPEIbase v2.10.0: 1) Based on the CRU TS 4.08 dataset, spanning the period
