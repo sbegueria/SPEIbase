@@ -182,7 +182,9 @@ spei.nc <- function(sca, inPre, outFile, inEtp=NA, title=NA, comment=NA,
 		for (i in 1:dimlon) {
 			for (h in 1:n-1) {
 				part <- x.list[[h*dimlon+i]]
-				part[is.nan(part/part)] <- NA
+				# Set non-finite values (NA, NaN, Inf, -Inf) to NA, keeping
+				# valid zeros (is.nan(part/part) also removed SPEI == 0).
+				part[!is.finite(part)] <- NA
 				x[i,{h+1},] <- part
 			}
 		}
